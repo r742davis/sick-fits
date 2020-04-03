@@ -1,1 +1,2 @@
-variables.envvariables.env
+# dotenv environment variable file
+.env
