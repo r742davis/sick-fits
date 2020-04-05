@@ -1,5 +1,5 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const Mutations = {
   async createItem(parent, args, ctx, info) {
@@ -8,8 +8,8 @@ const Mutations = {
     const item = await ctx.db.mutation.createItem(
       {
         data: {
-          ...args
-        }
+          ...args,
+        },
       },
       info
     );
@@ -26,8 +26,8 @@ const Mutations = {
       {
         data: updates,
         where: {
-          id: args.id
-        }
+          id: args.id,
+        },
       },
       info
     );
@@ -46,23 +46,42 @@ const Mutations = {
     // hash their password
     const password = await bcrypt.hash(args.password, 10);
     //create the user in database
-    const user = await ctx.db.mutation.createUser({
-      data: {
-        ...args,
-        password,
-        permissions: { set: ['USER']},
+    const user = await ctx.db.mutation.createUser(
+      {
+        data: {
+          ...args,
+          password,
+          permissions: { set: ["USER"] },
+        },
       },
-    }, info);
+      info
+    );
     // CREATE JWT TOKEN
-    const token = jwt.sign({ userId: user.id}, process.env.APP_SECRET);
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
     // Set the jwt as a cookie on the response
-    ctx.response.cookie('token', token, {
+    ctx.response.cookie("token", token, {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365,
     });
     // Return the user to the browser
     return user;
-  }
+  },
+  async signin(parent, { email, password }, ctx, info) {
+    const user = await ctx.db.query.user({ where: { email } });
+    if (!user) {
+      throw new Error(`No such user found for email ${email}`);
+    }
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) {
+      throw new Error("Invalid Password!");
+    }
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+    ctx.response.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365,
+    });
+    return user;
+  },
 };
 
 module.exports = Mutations;
