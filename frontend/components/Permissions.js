@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 import Table from "./styles/Table";
 import { th } from "date-fns/locale";
 import SickButton from "./styles/SickButton";
+import PropTypes from 'prop-types';
 
 const possiblePermissions = [
   'ADMIN',
@@ -53,6 +54,18 @@ const Permissions  = props => (
 )
 
 class User extends React.Component {
+  static propTypes = {
+    user: PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+      id: PropTypes.string,
+      permissions: PropTypes.array,
+    }).isRequired,
+  };
+
+  state = {
+    permissions: this.props.user.permissions,
+  }
   render() {
     const user = this.props.user;
     return (
