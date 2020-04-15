@@ -3,12 +3,13 @@ const jwt = require("jsonwebtoken");
 const { randomBytes } = require("crypto");
 const { promisify } = require("util");
 const { transport, makeANiceEmail } = require("../mail");
+const { hasPermission } = require("../utils");
 
 const Mutations = {
   async createItem(parent, args, ctx, info) {
     // TODO: Check if they are logged in
-    if(!ctx.request.userId) {
-      throw new Error('You must be logged in to do that!')
+    if (!ctx.request.userId) {
+      throw new Error("You must be logged in to do that!");
     }
 
     const item = await ctx.db.mutation.createItem(
@@ -120,18 +121,18 @@ const Mutations = {
       where: { email: args.email },
       data: { resetToken, resetTokenExpiry }
     });
-    
+
     const mailResponse = await transport.sendMail({
       from: "richardTEST@gmail.com",
       to: user.email,
       subject: "Your Password Reset",
       html: makeANiceEmail(`Your Password Reset Token is here!
       \n\n
-      <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">Click Here to Reset</a>
+      <a href="${
+        process.env.FRONTEND_URL
+      }/reset?resetToken=${resetToken}">Click Here to Reset</a>
       `)
-    })
-
-
+    });
 
     return { message: "Thanks!" };
     // 3. Email them that reset token
@@ -172,6 +173,33 @@ const Mutations = {
     });
     // 8. return the new user
     return updatedUser;
+  },
+  async updatePermissions(parent, args, ctx, info) {
+    if (!ctx.request.userId) {
+      throw new Error("You must be logged in!");
+    }
+
+    const currentUser = await ctx.db.query.user(
+      {
+        where: {
+          id: ctx.request.userId
+        }
+      },
+      info
+    );
+
+    hasPermission(currentUser, ["ADMIN", "PERMISSIONUPDATE"]);
+
+    return ctx.db.mutation.updateUser({
+      data: {
+        permissions: {
+          set: args.permissions,
+        }
+      },
+      where: {
+        id: args.userId
+      }
+    }, info)
   }
 };
 
