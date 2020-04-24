@@ -266,7 +266,7 @@ next_router__WEBPACK_IMPORTED_MODULE_4___default.a.onRouteChangeComplete = funct
 };
 
 next_router__WEBPACK_IMPORTED_MODULE_4___default.a.onRouteChangeError = function () {
-  console.log('ERROR TRIGGERED');
+  console.log("ERROR TRIGGERED");
 };
 
 var Logo = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.h1.withConfig({
@@ -292,58 +292,58 @@ var Header = function Header() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StyledHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 57
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bar",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 58
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Logo, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 59
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 60
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 61
     },
     __self: this
   }, "Sick Fits"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 64
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sub-bar",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 66
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 67
     },
     __self: this
   }, "Search")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cart__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 69
     },
     __self: this
   }));
@@ -535,7 +535,7 @@ var Nav = function Nav() {
         onClick: toggleCart,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29
+          lineNumber: 28
         },
         __self: this
       }, "My Cart");
@@ -543,13 +543,13 @@ var Nav = function Nav() {
       href: "/signup",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 35
+        lineNumber: 33
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 36
+        lineNumber: 34
       },
       __self: this
     }, "Sign Up")));
@@ -612,14 +612,14 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var theme = {
-  red: '#FF0000',
-  black: '#393939',
-  grey: '#3A3A3A',
-  lightgrey: '#E1E1E1',
-  offWhite: '#EDEDED',
-  maxWidth: '1000px',
-  bs: '0 12px 24px 0 rgba(0,0,0,0.09)',
-  mediaMaxWidth: '1300px'
+  red: "#FF0000",
+  black: "#393939",
+  grey: "#3A3A3A",
+  lightgrey: "#E1E1E1",
+  offWhite: "#EDEDED",
+  maxWidth: "1000px",
+  bs: "0 12px 24px 0 rgba(0,0,0,0.09)",
+  mediaMaxWidth: "1300px"
 };
 var StyledPage = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "Page__StyledPage",

@@ -9,7 +9,7 @@ import { astFromValue } from "graphql";
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {
-    item(where: { id: $id}) {
+    item(where: { id: $id }) {
       id
       title
       description
@@ -43,7 +43,7 @@ const UPDATE_ITEM_MUTATION = gql`
 class UpdateItem extends Component {
   state = {};
 
-  handleChange = e => {
+  handleChange = (e) => {
     const { name, type, value } = e.target;
     const val = type === "number" ? parseFloat(value) : value;
     this.setState({ [name]: val });
@@ -51,36 +51,33 @@ class UpdateItem extends Component {
 
   updateItem = async (e, updateItemMutation) => {
     e.preventDefault();
-    console.log('Updating Item!');
+    console.log("Updating Item!");
     console.log(this.state);
     const res = await updateItemMutation({
       variables: {
         id: this.props.id,
         ...this.state,
-      }
+      },
     });
-
-    
-  }
+  };
 
   render() {
     return (
       <Query
         query={SINGLE_ITEM_QUERY}
         variables={{
-          id: this.props.id
+          id: this.props.id,
         }}
       >
         {({ data, loading }) => {
-          if(loading) return <p>Loading...</p>;
-          if(!data.item) return <p>No Item Found for ID {this.props.id}</p>
+          if (loading) return <p>Loading...</p>;
+          if (!data.item) return <p>No Item Found for ID {this.props.id}</p>;
           return (
             <Mutation mutation={UPDATE_ITEM_MUTATION} variables={this.state}>
               {(updateItem, { loading, error }) => (
-                <Form onSubmit={e => this.updateItem(e, updateItem)}>
+                <Form onSubmit={(e) => this.updateItem(e, updateItem)}>
                   <Error error={error} />
                   <fieldset disabled={loading} aria-busy={loading}>
-
                     <label htmlFor="title">
                       Title
                       <input
@@ -118,7 +115,9 @@ class UpdateItem extends Component {
                         required
                       />
                     </label>
-                    <button type="submit">Sav{loading ? 'ing' : 'e' } Changes</button>
+                    <button type="submit">
+                      Sav{loading ? "ing" : "e"} Changes
+                    </button>
                   </fieldset>
                 </Form>
               )}

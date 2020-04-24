@@ -40,7 +40,6 @@ const Cart = () => (
         )}
       </Query>
     )}
-    
   </Mutation>
 );
 

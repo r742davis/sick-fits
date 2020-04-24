@@ -107,7 +107,13 @@ class UserPermissions extends React.Component {
       >
         {(updatePermissions, { loading, error }) => (
           <>
-            {error && <tr><td colSpan="8"><Error error={error} /></td></tr>}
+            {error && (
+              <tr>
+                <td colSpan="8">
+                  <Error error={error} />
+                </td>
+              </tr>
+            )}
             <tr>
               <td>{user.name}</td>
               <td>{user.email}</td>

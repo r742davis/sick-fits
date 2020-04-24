@@ -3,7 +3,7 @@ import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import Form from "./styles/Form";
 import Error from "./ErrorMessage";
-import { CURRENT_USER_QUERY } from './User';
+import { CURRENT_USER_QUERY } from "./User";
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(
@@ -23,30 +23,31 @@ class Signup extends Component {
   state = {
     email: "",
     name: "",
-    password: ""
+    password: "",
   };
 
-  saveToState = e => {
+  saveToState = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
     return (
-      <Mutation 
-        mutation={SIGNUP_MUTATION} 
+      <Mutation
+        mutation={SIGNUP_MUTATION}
         variables={this.state}
-        refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
+        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+      >
         {(signup, { error, loading }) => (
           <Form
             method="post"
-            onSubmit={async e => {
+            onSubmit={async (e) => {
               e.preventDefault();
               const res = await signup();
               console.log(res);
               this.setState({
                 name: "",
                 email: "",
-                password: ""
+                password: "",
               });
             }}
           >

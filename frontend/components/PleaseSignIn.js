@@ -14,7 +14,7 @@ const PleaseSignIn = (props) => (
           </div>
         );
       }
-      return props.children
+      return props.children;
     }}
   </Query>
 );

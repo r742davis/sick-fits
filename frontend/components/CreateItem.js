@@ -34,16 +34,16 @@ class CreateItem extends Component {
     description: "",
     image: "",
     largeImage: "",
-    price: 0
+    price: 0,
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     const { name, type, value } = e.target;
     const val = type === "number" ? parseFloat(value) : value;
     this.setState({ [name]: val });
   };
 
-  uploadFile = async e => {
+  uploadFile = async (e) => {
     console.log("Uploading file...");
     const files = e.target.files;
     const data = new FormData();
@@ -54,7 +54,7 @@ class CreateItem extends Component {
       "https://api.cloudinary.com/v1_1/elwoodrich/image/upload",
       {
         method: "POST",
-        body: data
+        body: data,
       }
     );
 
@@ -62,7 +62,7 @@ class CreateItem extends Component {
     console.log(file);
     this.setState({
       image: file.secure_url,
-      largeImage: file.eager[0].secure_url
+      largeImage: file.eager[0].secure_url,
     });
   };
 
@@ -71,13 +71,13 @@ class CreateItem extends Component {
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
         {(createItem, { loading, error }) => (
           <Form
-            onSubmit={async e => {
+            onSubmit={async (e) => {
               e.preventDefault();
               const res = await createItem();
               console.log(res);
               Router.push({
                 pathname: "/item",
-                query: { id: res.data.createItem.id }
+                query: { id: res.data.createItem.id },
               });
             }}
           >

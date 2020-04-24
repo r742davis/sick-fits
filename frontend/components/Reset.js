@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
-import PropTypes from 'prop-types';
-import Form from './styles/Form';
-import Error from './ErrorMessage';
-import { CURRENT_USER_QUERY } from './User';
+import React, { Component } from "react";
+import { Mutation } from "react-apollo";
+import gql from "graphql-tag";
+import PropTypes from "prop-types";
+import Form from "./styles/Form";
+import Error from "./ErrorMessage";
+import { CURRENT_USER_QUERY } from "./User";
 
 const RESET_MUTATION = gql`
-  mutation RESET_MUTATION($resetToken: String!, $password: String!, $confirmPassword: String!) {
-    resetPassword(resetToken: $resetToken, password: $password, confirmPassword: $confirmPassword) {
+  mutation RESET_MUTATION(
+    $resetToken: String!
+    $password: String!
+    $confirmPassword: String!
+  ) {
+    resetPassword(
+      resetToken: $resetToken
+      password: $password
+      confirmPassword: $confirmPassword
+    ) {
       id
       email
       name
@@ -21,10 +29,10 @@ class Reset extends Component {
     resetToken: PropTypes.string.isRequired,
   };
   state = {
-    password: '',
-    confirmPassword: '',
+    password: "",
+    confirmPassword: "",
   };
-  saveToState = e => {
+  saveToState = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   render() {
@@ -41,10 +49,10 @@ class Reset extends Component {
         {(reset, { error, loading, called }) => (
           <Form
             method="post"
-            onSubmit={async e => {
+            onSubmit={async (e) => {
               e.preventDefault();
               await reset();
-              this.setState({ password: '', confirmPassword: '' });
+              this.setState({ password: "", confirmPassword: "" });
             }}
           >
             <fieldset disabled={loading} aria-busy={loading}>

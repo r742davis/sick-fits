@@ -25,9 +25,7 @@ const Nav = () => (
             </Link>
             <Signout />
             <Mutation mutation={TOGGLE_CART_MUTATION}>
-              {(toggleCart) => (
-              <button onClick={toggleCart}>My Cart</button>
-              )}
+              {(toggleCart) => <button onClick={toggleCart}>My Cart</button>}
             </Mutation>
           </>
         )}

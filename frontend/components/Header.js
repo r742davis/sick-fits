@@ -1,20 +1,19 @@
-import Nav from './Nav';
-import Link from 'next/link';
-import styled from 'styled-components';
-import Router from 'next/router';
-import NProgress from 'nprogress';
+import Nav from "./Nav";
+import Link from "next/link";
+import styled from "styled-components";
+import Router from "next/router";
+import NProgress from "nprogress";
 import Cart from "./Cart";
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
-}
+};
 Router.onRouteChangeComplete = () => {
   NProgress.done();
-}
+};
 Router.onRouteChangeError = () => {
-  console.log('ERROR TRIGGERED')
-}
-
+  console.log("ERROR TRIGGERED");
+};
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -24,12 +23,12 @@ const Logo = styled.h1`
   transform: skew(-7deg);
   a {
     padding: 0.5rem 1rem;
-    background: ${props => props.theme.red};
+    background: ${(props) => props.theme.red};
     color: white;
     text-transform: uppercase;
     text-decoration: none;
   }
-  @media (max-width: ${props => props.theme.mediaMaxWidth}) {
+  @media (max-width: ${(props) => props.theme.mediaMaxWidth}) {
     margin: 0;
     text-align: center;
   }
@@ -37,12 +36,12 @@ const Logo = styled.h1`
 
 const StyledHeader = styled.header`
   .bar {
-    border-bottom: 10px solid ${props => props.theme.black};
+    border-bottom: 10px solid ${(props) => props.theme.black};
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     align-items: stretch;
-    @media (max-width: ${props => props.theme.mediaMaxWidth}) {
+    @media (max-width: ${(props) => props.theme.mediaMaxWidth}) {
       grid-template-columns: 1fr;
       justify-content: center;
     }
@@ -50,7 +49,7 @@ const StyledHeader = styled.header`
   .sub-bar {
     display: grid;
     grid-template-columns: 1fr auto;
-    border-bottom: 1px solid ${props => props.theme.lightgrey};
+    border-bottom: 1px solid ${(props) => props.theme.lightgrey};
   }
 `;
 
@@ -69,6 +68,6 @@ const Header = () => (
     </div>
     <Cart />
   </StyledHeader>
-)
+);
 
 export default Header;
