@@ -297,6 +297,7 @@ const Mutations = {
             id 
             description 
             image
+            largeImage
           }}}`
     );
     //Recalculate the total for the price
@@ -310,11 +311,35 @@ const Mutations = {
       amount: amt,
       currency: "USD",
       source: args.token,
-    })
+    });
     //Convert the cart Item to order Items
+    const orderItems = user.cart.map((cartItem) => {
+      const orderItem = {
+        ...cartItem.item,
+        quantity: cartItem.quantity,
+        user: { connect: { id: userId } },
+      };
+      delete orderItem.id;
+      return orderItem;
+    });
     //Create the order
+    const order = await ctx.db.mutation.createOrder({
+      data: {
+        total: charge.amount,
+        charge: charge.id,
+        items: { create: orderItems },
+        user: { connect: { id: userId } },
+      },
+    });
     //Clear the user's cart, delete cart items
+    const cartItemIds = user.cart.map((cartItem) => cartItem.id);
+    await ctx.db.mutation.deleteManyCartItems({
+      where: { 
+        id_in: cartItemIds 
+      },
+    });
     //Return the order to the client
+    return order;
   },
 };
 

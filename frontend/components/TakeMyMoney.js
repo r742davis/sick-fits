@@ -28,17 +28,18 @@ function totalItems(cart) {
 }
 
 class TakeMyMoney extends React.Component {
-  onToken = (res, createOrder) => {
+  onToken = async (res, createOrder) => {
     console.log("On Token Open");
     console.log(res.id);
     // Manually call the mutation instead of automatically calling it in the Mutation binding
-    createOrder({
+    const order = await createOrder({
       variables: {
         token: res.id,
       },
     }).catch((err) => {
       alert(err.message);
     });
+    console.log(order);
   };
   render() {
     return (
@@ -53,7 +54,7 @@ class TakeMyMoney extends React.Component {
                 amount={calcTotalPrice(me.cart)}
                 name="Sick Fits"
                 description={`Order of ${totalItems(me.cart)}`}
-                image={me.cart[0].item && me.cart[0].item.image}
+                image={me.cart.length && me.cart[0].item && me.cart[0].item.image}
                 stripeKey="pk_test_3h8gL5NshQXYX9TNn24EPtmZ00SUv3BMBt"
                 currency="USD"
                 email={me.email}
