@@ -187,15 +187,14 @@ const Mutations = {
       throw new Error("You must be logged in!");
     }
     // 2. Query the current user
-    // const currentUser = await ctx.db.query.user(
-    //   {
-    //     where: {
-    //       id: ctx.request.userId,
-    //     },
-    //   },
-    //   info
-    // );
-    const currentUser = ctx.request.user;
+    const currentUser = await ctx.db.query.user(
+      {
+        where: {
+          id: ctx.request.userId,
+        },
+      },
+      info
+    );
     // 3. Check if they have permissions to do this
     hasPermission(currentUser, ["ADMIN", "PERMISSIONUPDATE"]);
     // 4. Update the permissions
