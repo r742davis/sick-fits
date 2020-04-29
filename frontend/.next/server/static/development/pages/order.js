@@ -293,19 +293,177 @@ function (_React$Component) {
           },
           __self: this
         }, "Loading...");
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 45
-          },
-          __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        var order = data.order;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_OrderStyles__WEBPACK_IMPORTED_MODULE_8__["default"], {
           __source: {
             fileName: _jsxFileName,
             lineNumber: 46
           },
           __self: this
-        }, "Order ID: ", _this.props.id));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 47
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 48
+          },
+          __self: this
+        }, "Sick Fits - Order ", order.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 50
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 51
+          },
+          __self: this
+        }, "Order ID:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 52
+          },
+          __self: this
+        }, _this.props.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 54
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 55
+          },
+          __self: this
+        }, "Charge:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 56
+          },
+          __self: this
+        }, order.charge)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 58
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 59
+          },
+          __self: this
+        }, "Date:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 60
+          },
+          __self: this
+        }, Object(date_fns__WEBPACK_IMPORTED_MODULE_3__["format"])(order.createdAt, "MMMM d, YYYY h:mm a"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 63
+          },
+          __self: this
+        }, "Order Total:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 64
+          },
+          __self: this
+        }, Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__["default"])(order.total))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 66
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 67
+          },
+          __self: this
+        }, "Item Count:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 68
+          },
+          __self: this
+        }, order.items.length)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "items",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 70
+          },
+          __self: this
+        }, order.items.map(function (item) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "order-item",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 72
+            },
+            __self: this
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: item.image,
+            alt: item.title,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 73
+            },
+            __self: this
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "item-details",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 74
+            },
+            __self: this
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 75
+            },
+            __self: this
+          }, item.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 76
+            },
+            __self: this
+          }, "Qty: ", item.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 77
+            },
+            __self: this
+          }, "Each: ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__["default"])(item.price)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 78
+            },
+            __self: this
+          }, "Subtotal: ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__["default"])(item.price * item.quantity)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 79
+            },
+            __self: this
+          }, item.description)));
+        })));
       });
     }
   }]);
