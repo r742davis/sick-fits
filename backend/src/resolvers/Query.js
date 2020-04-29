@@ -28,6 +28,24 @@ const Query = {
 
     // 2. if they do, query all the users!
     return ctx.db.query.users({}, info);
+  },
+  async OverconstrainedError(parent, args, ctx, info) {
+    //Make sure they are logged in
+    if (!ctx.request.userId) {
+      throw new Error("You aren't logged in");
+    }
+    //Query the current order
+    const order = await ctx.db.query.order({
+      where: { id: args.id },
+    }, info)
+    //Check if they have the permissions to see this order
+    const ownsOrder = order.user.id === ctx.request.userId;
+    const hasPermissionToSeeOrder = ctx.request.user.permissions.includes('ADMIN')
+    if(!ownsOrder || !hasPermission) {
+      throw new Error("You can't see this.")
+    }
+    //Return the order
+    return order;
   }
 };
 

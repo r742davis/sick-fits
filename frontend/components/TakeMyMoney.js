@@ -29,6 +29,7 @@ function totalItems(cart) {
 
 class TakeMyMoney extends React.Component {
   onToken = async (res, createOrder) => {
+    NProgress.start();
     console.log("On Token Open");
     console.log(res.id);
     // Manually call the mutation instead of automatically calling it in the Mutation binding
@@ -39,7 +40,10 @@ class TakeMyMoney extends React.Component {
     }).catch((err) => {
       alert(err.message);
     });
-    console.log(order);
+    Router.push({
+      pathname: '/order',
+      query: { id: order.data.createOrder.id }
+    })
   };
   render() {
     return (
