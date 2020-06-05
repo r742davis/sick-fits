@@ -5,23 +5,11 @@
   "pages": {
     "/_app": [
       "static/runtime/webpack.js",
-      "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.ce4a6cd653b7754122fe.hot-update.js"
+      "static/runtime/main.js"
     ],
     "/_error": [
       "static/runtime/webpack.js",
-      "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.ce4a6cd653b7754122fe.hot-update.js"
-    ],
-    "/signup": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.ce4a6cd653b7754122fe.hot-update.js"
-    ],
-    "/items": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.ce4a6cd653b7754122fe.hot-update.js"
+      "static/runtime/main.js"
     ]
   }
 }
