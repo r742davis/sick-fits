@@ -1,1 +1,1 @@
-# sick-fits
+# Sick Fits Project
