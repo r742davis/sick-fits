@@ -1647,7 +1647,7 @@ var _jsxFileName = "/Users/richiedavis/Desktop/Coding/Sick-Fits/frontend/compone
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  query {\n    me {\n      id\n      email\n      name\n      permissions\n      cart {\n        id\n        quantity\n        item {\n          id\n          price\n          image\n          title\n          description\n        }\n      }\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  query {\n    me {\n      id\n      email\n      name\n      permissions\n      orders {\n        id\n      }\n      cart {\n        id\n        quantity\n        item {\n          id\n          price\n          image\n          title\n          description\n        }\n      }\n    }\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -1668,7 +1668,7 @@ var User = function User(props) {
     query: CURRENT_USER_QUERY,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 31
     },
     __self: this
   }), function (payload) {
@@ -2796,7 +2796,7 @@ module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/
 /*!************************************************!*\
   !*** ./node_modules/apollo-boost/lib/index.js ***!
   \************************************************/
-/*! exports provided: gql, InMemoryCache, HttpLink, default, printAST, ObservableQuery, NetworkStatus, ApolloError, ApolloClient, createOperation, makePromise, toPromise, fromPromise, fromError, Observable, defaultDataIdFromObject, FetchType, empty, from, split, concat, ApolloLink, execute, ID_KEY, readQueryFromStore, diffQueryAgainstStore, assertIdValue, WriteError, enhanceErrorWithDocument, writeQueryToStore, writeResultToStore, writeSelectionSetToStore, HeuristicFragmentMatcher, IntrospectionFragmentMatcher, ObjectCache, defaultNormalizedCacheFactory, RecordingCache, record */
+/*! exports provided: printAST, ObservableQuery, NetworkStatus, ApolloError, ApolloClient, createOperation, makePromise, toPromise, fromPromise, fromError, Observable, gql, InMemoryCache, HttpLink, default, FetchType, empty, from, split, concat, ApolloLink, execute, defaultDataIdFromObject, ID_KEY, readQueryFromStore, diffQueryAgainstStore, assertIdValue, WriteError, enhanceErrorWithDocument, writeQueryToStore, writeResultToStore, writeSelectionSetToStore, HeuristicFragmentMatcher, IntrospectionFragmentMatcher, ObjectCache, defaultNormalizedCacheFactory, RecordingCache, record */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
